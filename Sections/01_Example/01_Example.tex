@@ -1,0 +1,164 @@
+\documentclass[
+../../Summary.tex,
+]
+{subfiles}
+    
+\externaldocument[ext:]{../../Summary.tex} 
+% !!! If you rename the main file of the summary, change the path to the main file here !!! and in the documentclass options
+
+% Set Graphics Path to folder with images
+\graphicspath{{../../Pics}}
+
+\begin{document}
+\section{Example Section}
+\subsection{Predefined Commands}
+Not a lot, but still useful. 
+
+\begin{itemize}
+    \item \defc{defc}: Definition color and bold
+    \item \mathc{mathc}: Math color
+    \item \codec{codec}: Code color and ttfont
+\end{itemize}
+
+\subsection{Predefined Box Types}
+I have defined multiple tcolorbox environments, to make it easier to use them, without always having to add the options.
+
+In general there are three types of boxes:
+\begin{itemize}
+    \item \defc{defbox} for definitions, concepts etc.
+    \item \mathc{mathbox} for math
+    \item \codec{codebox} for code 
+\end{itemize}
+
+They mainly differ in color, which can be easily changed in \texttt{summary\_individuals.tex}
+
+
+For all three types of boxes there are some small different versions:
+
+\subsubsection{Definition Boxes}
+\begin{defbox}
+    [defbox]
+    Normal definition box, with title, spanning the whole width of the environment. Takes title as the first argument and other options as the second argument.
+\end{defbox}
+
+\begin{defbox*}
+    \defc{defbox*}: Same as \defc{defbox}, but without a title. Can take one argument, which will be used as additional options.
+\end{defbox*}
+
+\begin{smalldefbox}
+    [smalldefbox]
+    Like \defc{defbox} but with the \texttt{hbox} option. Makes it adapt the width to the content.
+\end{smalldefbox}
+
+\begin{smalldefbox*}
+    \defc{smalldefbox*}: Is to \defc{smalldefbox} as \defc{defbox*} is to \defc{defbox}.
+\end{smalldefbox*}
+
+\begin{csdb*}
+    \defc{csdb*}: Like \defc{smalldefbox*} but centered to the environment.
+\end{csdb*}
+
+\inldefbox{\defc{inldefbox}: Way to put definitions in-line.}
+
+\subsubsection{Math Boxes}
+\begin{mathbox}
+    [mathbox]
+    Normal math box, with title, spanning the whole width of the environment. Takes title as the first argument and other options as the second argument.
+\end{mathbox}
+
+\begin{mathbox*}
+    \defc{mathbox*}: Same as \defc{mathbox}, but without a title. Can take one argument, which will be used as additional options.
+\end{mathbox*}
+
+\begin{smallmathbox}
+    [smallmathbox]
+    Like \defc{mathbox} but with the \texttt{hbox} option. Makes it adapt the width to the content.
+\end{smallmathbox}
+
+\begin{smallmathbox*}
+    \defc{smallmathbox*}: Is to \defc{smallmathbox} as \defc{mathbox*} is to \defc{mathbox}.
+\end{smallmathbox*}
+
+\begin{csmb*}
+    \defc{csmb*}: Like \defc{smallmathbox*} but centered to the environment.
+\end{csmb*}
+
+\inlmathbox{\defc{inlmathbox}: Way to put math in-line.}
+
+\subsubsection{Code Boxes}
+\begin{codebox}
+    [codebox]
+    Normal math box, with title, spanning the whole width of the environment. Takes title as the first argument and other options as the second argument.
+\end{codebox}
+
+\begin{codebox*}
+    \defc{codebox*}: Same as \defc{codebox}, but without a title. Can take one argument, which will be used as additional options.
+\end{codebox*}
+
+\begin{smallcodebox}
+    [smallcodebox]
+    Like \defc{codebox} but with the \texttt{hbox} option. Makes it adapt the width to the content.
+\end{smallcodebox}
+
+\begin{smallcodebox*}
+    \defc{smallcodebox*}: Is to \defc{smallcodebox} as \defc{codebox*} is to \defc{codebox}.
+\end{smallcodebox*}
+
+\begin{cscb*}
+    \defc{cscb*}: Like \defc{smallcodebox*} but centered to the environment.
+\end{cscb*}
+
+\inlcodebox{\defc{inlcodebox}: Way to put code snippets in-line.} Defaults to ttfont.
+
+\subsection{Code Snippets}
+\subsubsection{Actual Code with listings}
+For actual code snippets I use the \texttt{listings} package. There are some graphical options in the preamble.
+
+\begin{codebox}
+    [Example Java]
+    \begin{lstlisting}[language=Java]
+public class Example {
+    /**
+     * This is a docstring
+     */
+    public static void main(String[] args) {
+        // This is a comment
+        System.out.println("Hello World!");
+        return;
+    }
+}\end{lstlisting}
+\end{codebox}
+
+\begin{codebox}
+    [Example Python]
+    \begin{lstlisting}[language=Python]
+# This is a comment
+def example() -> bool:
+    """
+    This is a docstring
+    """
+    print("Hello World!")
+    return True
+\end{lstlisting}
+\end{codebox}
+
+\subsubsection{Pseudocode with algorithm2e}
+For pseudocode I use \texttt{algorithm2e}. I've modified the style in the preamble to make it look a bit nicer, especially to show scope better. There are also some additional commands I've defined - For these check the preamble.
+
+\begin{codebox}
+    [Example Pseudocode]
+    \begin{algorithm}[H]
+        \SetKwFunction{ExamplePseudocode}{ExamplePseudocode}
+
+        \Fn{\ExamplePseudocode{args}}{
+            \tcp{This is a comment}
+            \For{int i = 0; i < 10; i = i + 1}{
+                \If{condition}{
+                    \KwRet{true}
+                }
+            }
+        }
+    \end{algorithm}
+\end{codebox}
+
+\end{document}
